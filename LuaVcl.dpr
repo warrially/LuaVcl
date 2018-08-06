@@ -18,10 +18,5 @@ var
 begin
     Lua             := TWaryLua.Create;
     Lua.LibraryPath := LUA_LIBRARY;
-    Lua.DoFile('main.lua');
-    Sleep(2000);
-//  Application.Initialize;
-//  Application.MainFormOnTaskbar := True;
-//  Application.CreateForm(TForm, lpForm);
-//  Application.Run;
+    Lua.DoFile('src/main.lua');
 end.

@@ -32,11 +32,13 @@ begin
     inherited;
     LibraryPath := LUA_LIBRARY;
     pApplicationLua := TApplicationLua.Create;
+    pFormLua := TFormLua.Create();
 end;
 
 destructor TWaryLua.Destroy;
 begin
     pApplicationLua.Free();
+    pFormLua.Free();
     inherited;
 end;
 
@@ -54,8 +56,8 @@ procedure TWaryLua.Open;
 begin
     inherited;
     // and create a second package and auto register those package functions
-    RegisterPackage('vcl.application', pApplicationLua);
-    RegisterPackage('vcl.form', pFormLua);
+    RegisterPackage('vcl.Application', pApplicationLua);
+    RegisterPackage('vcl.Form', pFormLua);
 end;
 
 end.

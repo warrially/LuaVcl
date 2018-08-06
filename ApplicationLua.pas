@@ -39,9 +39,11 @@ end;
 
 function TApplicationLua.CreateForm(L: lua_State): Integer;
 var
-   pForm : TForm;
+    pForm : TForm;
 begin
-   Application.CreateForm(TFormLua, pForm);
+    Application.CreateForm(TForm, pForm);
+    lua_pushlightuserdata(L, pForm);
+    result := 1;
 end;
 
 destructor TApplicationLua.Destroy;
