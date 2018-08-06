@@ -1,0 +1,7 @@
+/Dcu
+/__history
+/*.local
+/*.identcache
+/*.res
+/*.stat
+*.exe
