@@ -31,7 +31,7 @@ constructor TWaryLua.Create;
 begin
     inherited;
     LibraryPath := LUA_LIBRARY;
-    pApplicationLua := TApplicationLua.Create;
+    pApplicationLua := TApplicationLua.Create();
     pFormLua := TFormLua.Create();
 end;
 

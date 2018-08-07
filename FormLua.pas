@@ -11,33 +11,22 @@ uses
 type
     TFormLua = class
     private
-    published
-        function Print(L: lua_State): Integer; //
 
-        function CreateForm(L: lua_State): Integer; // 创建一个窗体
+    public
+       procedure __OnClick(Sender: TObject); // 单击回调
+    published
+
         function SetCaption(L: lua_State): Integer; // 设置窗体标题
+        function SetOnClick(L: lua_State): Integer; // 设置窗体标题
+
     end;
 
 implementation
 
-uses IOUtils, Types;
+uses IOUtils, Types, Lua;
 
 { TFormLua }
 
-
-
-function TFormLua.CreateForm(L: lua_State): Integer;
-//var
-//  pForm : TForm;
-begin
-//     pForm
-end;
-
-
-function TFormLua.Print(L: lua_State): Integer;
-begin
-
-end;
 
 function TFormLua.SetCaption(L: lua_State): Integer;
 var
@@ -51,4 +40,25 @@ begin
 
 end;
 
+// 设置单机回调
+function TFormLua.SetOnClick(L: lua_State): Integer;
+var
+   instance : pointer;
+begin
+    instance := lua_touserdata(L, 1);
+
+    TForm(instance).OnClick := self.__OnClick;
+end;
+
+
+procedure TFormLua.__OnClick(Sender: TObject);
+var
+  L : lua_State;
+begin
+   L := g_Lua.LuaState;
+   lua_getglobal(L, 'WaryCallback');
+   lua_pushlightuserdata(L, Sender);
+   lua_pushstring(L, '__OnClick');
+   lua_call(L, 2, 0);
+end;
 end.

@@ -8,15 +8,14 @@ uses
   WaryLua in 'WaryLua.pas',
   ApplicationLua in 'ApplicationLua.pas',
   FormLua in 'FormLua.pas',
-  Vcl.Forms;
+  Vcl.Forms,
+  Lua in 'Lua.pas';
 
 {$R *.res}
 
-var
-//  lpForm : TForm;
-  Lua : TWaryLua;
+
 begin
-    Lua             := TWaryLua.Create;
-    Lua.LibraryPath := LUA_LIBRARY;
-    Lua.DoFile('src/main.lua');
+    g_Lua             := TWaryLua.Create;
+    g_Lua.LibraryPath := LUA_LIBRARY;
+    g_Lua.DoFile('lib/Wary.lua');
 end.

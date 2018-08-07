@@ -4,6 +4,7 @@ local Application = require("lua.Application")
 
 Application:Initialize();
 Application:SetMainFormOnTaskBar(true);
-local pForm = Application:CreateForm();
-pForm:SetCaption("wangwei");
+
+require("src.TMainForm"):Create();
+
 Application:Run();
