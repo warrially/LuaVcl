@@ -23,7 +23,7 @@ type
 
 implementation
 
-uses IOUtils, Types, Lua;
+uses IOUtils, Types, GlobalDefine;
 
 { TFormLua }
 
@@ -61,4 +61,6 @@ begin
    lua_pushstring(L, '__OnClick');
    lua_call(L, 2, 0);
 end;
+
+
 end.

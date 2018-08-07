@@ -11,9 +11,10 @@ function TForm:Create()
     print("instance = ", instance)
 
     -- 手动补构造函数
-    if pForm.onCreate then
-        pForm:onCreate();
+    if pForm.ctor then
+        pForm:ctor();
     end
+
     return pForm;
 end;
 

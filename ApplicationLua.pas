@@ -26,7 +26,7 @@ type
 
 implementation
 
-uses IOUtils, Types, FormLua  ;
+uses IOUtils, Types, FormLua, SampleForm  ;
 { TMyPackage2 }
 
 
@@ -41,7 +41,7 @@ function TApplicationLua.CreateForm(L: lua_State): Integer;
 var
     pForm : TForm;
 begin
-    Application.CreateForm(TForm, pForm);
+    Application.CreateForm(TWaryForm, pForm);
     lua_pushlightuserdata(L, pForm);
     result := 1;
 end;
